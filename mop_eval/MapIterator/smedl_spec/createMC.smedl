@@ -1,0 +1,15 @@
+object CreateMC;
+
+
+events:
+
+imported new_mc();//mid, cid
+imported new_ci(pointer);//cid, iid
+exported new_mci(pointer);
+
+scenarios:
+
+sce1:
+
+init -> new_mc() -> start;
+start ->new_ci(i) {raise new_mci(i);} -> start;

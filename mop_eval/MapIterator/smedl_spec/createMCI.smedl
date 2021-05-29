@@ -1,0 +1,18 @@
+object CreateMCI;
+
+events:
+
+imported new_mci();//iid
+imported traverse_m();//mid
+imported traverse_i();//iid
+
+exported violation();
+
+scenarios:
+
+sce1:
+
+init -> new_mci() -> start;
+start -> traverse_i() -> start;
+start -> traverse_m() -> updateM;
+updateM -> traverse_i() {raise violation();} -> updateM;

@@ -1,0 +1,10 @@
+system Unsafe;
+
+import "createVec.smedl";
+
+monitor CreateVec(int);
+
+ch1: new_v => CreateVec[$0].new_v();
+ch2: create_e => CreateVec[$0].create_e();
+ch3: visit_e => CreateVec[$0].visit_e();
+ch4: add_v => CreateVec[$0].add_v();

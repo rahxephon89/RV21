@@ -1,0 +1,17 @@
+system MapArch;
+
+
+import "createMC.smedl";
+import "createMCI.smedl";
+
+monitor CreateMC(pointer, pointer);
+monitor CreateMCI(pointer, pointer, pointer);
+
+syncset sync {CreateMC, CreateMCI};
+
+ch1: new_mc => CreateMC[$0,$1].new_mc;
+ch2: new_ci => CreateMC[*,$0].new_ci($1);
+ch3: CreateMC.new_mci => CreateMCI[#0,#1,$0].new_mci;
+ch4: traverse_m=> CreateMCI[$0,*,*].traverse_m;
+ch5: traverse_i=> CreateMCI[*,*,$0].traverse_i;
+

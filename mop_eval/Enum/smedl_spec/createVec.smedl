@@ -1,0 +1,20 @@
+object CreateVec;
+
+
+events:
+
+imported new_v();
+imported create_e();
+imported visit_e();
+imported add_v();
+exported violation();
+
+scenarios:
+
+sce1:
+
+init -> new_v() -> start;
+start -> create_e() -> exec;
+exec -> visit_e() -> exec;
+exec -> add_v()  -> ad;
+ad -> visit_e(){raise violation();} -> ad;
